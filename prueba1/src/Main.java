@@ -16,5 +16,8 @@ public class Main {
 
         Visitor visitor = new Visitor();
         visitor.visit(startCtx);
+
+        Principal principal = new Principal();
+
     }
 }
