@@ -6,8 +6,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
+
+import Gramatica.*;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CommonTokenStream;
+import static org.antlr.v4.runtime.CharStreams.fromString;
 
 public class Principal implements ActionListener {
     JButton btnInterpretar, btnTraducir, btnReportes;//creando variables globales de los botones
@@ -60,18 +63,25 @@ public class Principal implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {//sobreescribimos el metodo del listener
 
-        String area1, area2, consola;
+        String input, area2, consola;
 
         if(e.getSource()==btnInterpretar){//podemos comparar por el contenido del boton
-
-            area1 = jta1.getText();
+            //int var1 = 54+17*78;
+            input = jta1.getText();
             area2 = jta2.getText();
             consola = jta3.getText();
 
-            jta1.setText("hola");
-        }
-            /*mostramos el valor mediante el metodo .setText() como muestra cadenas
+            CharStream cs = fromString(input);
+            GramaticaLexer lexico = new GramaticaLexer(cs);
+            CommonTokenStream tokens = new CommonTokenStream(lexico);
+            GramaticaParser sintactico = new GramaticaParser(tokens);
+            GramaticaParser.StartContext startCtx = sintactico.start();
 
-             anteponemos una cadena vacia y concatenamos el resultado*/
+            Visitor visitor = new Visitor();
+            Object a;
+            a = visitor.visit(startCtx);
+            jta2.setText(a.toString());
+        }
+
     }
 }
