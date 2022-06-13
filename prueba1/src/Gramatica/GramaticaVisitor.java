@@ -1,4 +1,4 @@
-// Generated from C:/Users/Alfonso/Documents/prueba1/src\Gramatica.g4 by ANTLR 4.10.1
+// Generated from C:/Users/Alfonso/Documents/GitHub/Prueba/prueba1/src\Gramatica.g4 by ANTLR 4.10.1
 package Gramatica;
 import org.antlr.v4.runtime.tree.ParseTreeVisitor;
 
@@ -23,19 +23,47 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitLinstrucciones(GramaticaParser.LinstruccionesContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code blck}
-	 * labeled alternative in {@link GramaticaParser#instrucciones}.
+	 * Visit a parse tree produced by {@link GramaticaParser#instrucciones}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitBlck(GramaticaParser.BlckContext ctx);
+	T visitInstrucciones(GramaticaParser.InstruccionesContext ctx);
 	/**
-	 * Visit a parse tree produced by the {@code decl}
-	 * labeled alternative in {@link GramaticaParser#instrucciones}.
+	 * Visit a parse tree produced by {@link GramaticaParser#subroutine}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitDecl(GramaticaParser.DeclContext ctx);
+	T visitSubroutine(GramaticaParser.SubroutineContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#ldeclP}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLdeclP(GramaticaParser.LdeclPContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#declParameters}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitDeclParameters(GramaticaParser.DeclParametersContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#call}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitCall(GramaticaParser.CallContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#lexpr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitLexpr(GramaticaParser.LexprContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link GramaticaParser#print}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitPrint(GramaticaParser.PrintContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link GramaticaParser#block}.
 	 * @param ctx the parse tree
@@ -62,6 +90,13 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 */
 	T visitStrExpr(GramaticaParser.StrExprContext ctx);
 	/**
+	 * Visit a parse tree produced by the {@code funcExpr}
+	 * labeled alternative in {@link GramaticaParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitFuncExpr(GramaticaParser.FuncExprContext ctx);
+	/**
 	 * Visit a parse tree produced by the {@code opExpr}
 	 * labeled alternative in {@link GramaticaParser#expr}.
 	 * @param ctx the parse tree
@@ -82,4 +117,11 @@ public interface GramaticaVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitParenExpr(GramaticaParser.ParenExprContext ctx);
+	/**
+	 * Visit a parse tree produced by the {@code idExpr}
+	 * labeled alternative in {@link GramaticaParser#expr}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitIdExpr(GramaticaParser.IdExprContext ctx);
 }

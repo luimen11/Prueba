@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import Entorno.Entorno;
 import Gramatica.*;
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CommonTokenStream;
@@ -16,7 +17,7 @@ public class Principal implements ActionListener {
     JButton btnInterpretar, btnTraducir, btnReportes;//creando variables globales de los botones
     JScrollPane scrollpane1, scrollpane2, scrollpane3;
     JTextArea jta1, jta2, jta3;
-    JFrame jf = new JFrame("Proyecto 1);//creacion de ventana con el titulo");
+    JFrame jf = new JFrame("Proyecto 1");//creacion de ventana con el titulo
 
     public Principal() {//constructor de la clase
 
@@ -77,10 +78,11 @@ public class Principal implements ActionListener {
             GramaticaParser sintactico = new GramaticaParser(tokens);
             GramaticaParser.StartContext startCtx = sintactico.start();
 
-            Visitor visitor = new Visitor();
-            Object a;
-            a = visitor.visit(startCtx);
-            jta2.setText(a.toString());
+            Visitor visitor = new Visitor(new Entorno(null));
+            visitor.visit(startCtx);
+            jta2.setText(visitor.getPrint());
+
+
         }
 
     }

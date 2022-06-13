@@ -9,10 +9,10 @@ import java.util.Locale;
 public class Entorno {
 
     public HashMap<String, Simbolo> TablaSimbolo;
-    public Entorno anterior;
+    public Entorno padre;
 
-    public Entorno(Entorno anterior) {
-        this.anterior = anterior;
+    public Entorno(Entorno padre) {
+        this.padre = padre;
         TablaSimbolo = new HashMap<String, Simbolo>();
     }
 
@@ -26,4 +26,16 @@ public class Entorno {
             TablaSimbolo.put(nombre.toUpperCase(), nuevo);
         }
     }
+
+    public Simbolo Buscar(String nombre){
+        for(Entorno ent = this; ent != null; ent = ent.padre){
+            if(ent.TablaSimbolo.containsKey(nombre.toUpperCase())){
+                return ent.TablaSimbolo.get(nombre.toUpperCase());
+            }
+        }
+
+        return null;
+    }
+
+
 }
